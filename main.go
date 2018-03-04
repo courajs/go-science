@@ -1,30 +1,22 @@
 package main
 import (
-  "time"
   . "fmt"
-  . "github.com/jtolds/gls"
 )
 
-type Any = interface{}
-
-var c = NewContextManager()
-var k = "key"
-
-func printit(label string) {
-  id, okid := GetGoroutineId()
-  val, okval := c.GetValue(k)
-  Println(label, okid, id, okval, val)
+type S struct {
+  i int
 }
 
-func printer(label string) func() {
-  return func(){printit(label)}
+type O S
+
+func do(o O) {
+  Println(o.i)
 }
 
 func main() {
-  c.SetValues(Values(map[Any]Any{k: 4}), func() {
-    printit("setvalues")
-    Go(printer("Go"))
-    go printit("go")
-    time.Sleep(time.Second)
-  })
+  s := struct{i int}{4}
+  do(s)
+
+  // var s2 S = struct{i int}{4}
+  // do(s2)
 }
