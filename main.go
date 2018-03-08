@@ -3,20 +3,15 @@ import (
   . "fmt"
 )
 
-type S struct {
-  i int
-}
-
-type O S
-
-func do(o O) {
-  Println(o.i)
-}
-
 func main() {
-  s := struct{i int}{4}
-  do(s)
-
-  // var s2 S = struct{i int}{4}
-  // do(s2)
+  is := make([]int, 0, 10)
+  xs := make([][]int, 0, 10)
+  _ = append(xs, []int{
+    1,
+    2,
+  })
+  is = append(is, 4)
+  _ = append(is, 8)
+  i2 := is[:2]
+  Println(xs, is, i2)
 }
