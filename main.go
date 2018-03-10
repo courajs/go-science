@@ -4,13 +4,10 @@ import (
 	. "fmt"
 )
 
-type S struct {
-	m map[int]int
-}
-
 func main() {
-	var s S
-	s.m[4] = 5
-	val, ok := s.m[4]
-	Println(s, val, ok)
+	m1 := make(map[int]int, 2)
+	m2 := m1
+	m1[7] = 9
+	val, ok := m2[7]
+	Println(val, ok)
 }
