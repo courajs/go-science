@@ -4,14 +4,14 @@ import (
 	. "fmt"
 )
 
-type None struct{}
+func act() (int, int) {
+	return 1, 2
+}
 
-func seq(n int) []None {
-	return make([]None, n)
+func delegate() (int, int) {
+	return act()
 }
 
 func main() {
-	for i := range seq(9) {
-		Println(i/3, i%3)
-	}
+	Println(delegate())
 }
