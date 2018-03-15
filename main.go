@@ -4,10 +4,14 @@ import (
 	. "fmt"
 )
 
-func for() {
-	Println("yup")
+type None struct{}
+
+func seq(n int) []None {
+	return make([]None, n)
 }
 
 func main() {
-	for()
+	for i := range seq(9) {
+		Println(i/3, i%3)
+	}
 }
